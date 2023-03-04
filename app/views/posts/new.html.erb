@@ -13,6 +13,7 @@
   <p>
     <%= form.label "posted_on" %>
     <%= form.date_field "posted_on" %>
+    <%= form.hidden_field @current_user["id"] %>
   </p>
   <p>
     <%= form.submit %>

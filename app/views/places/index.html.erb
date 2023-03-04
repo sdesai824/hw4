@@ -1,11 +1,20 @@
 <h1>Places</h1>
 
 <ul>
-  <% for place in @places %>
-    <li><a href="/places/<%= place["id"] %>"><%= place["name"] %></a></li>
-  <% end %>
+  <%if @current_user%>
+    <% for place in @places %>
+      <li><a href="/places/<%= place["id"] %>"><%= place["name"] %></a></li>
+    <% end %>
+  <%else%>
+  Please log in
+  <%end%>
 </ul>
 
 <p>
-  <a href="/places/new">New place</a>
+  <%if @current_user%>
+    <a href="/places/new">New place</a>
+  <%else%>
+   
+  <%end%>
+  
 </p>

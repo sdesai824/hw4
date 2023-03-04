@@ -19,11 +19,11 @@
         <% if @current_user %>
           Logged in as: <%= @current_user["username"] %> |
           <a href="/logout" class="btn btn-default">Logout</a>
-          <a href="/">Home</a>
+          <a href="/places">Home</a>
         <% else %>
           <a href="/sessions/new" class="btn btn-default">Login</a> |
           <a href="/users/new" class="btn btn-default">Sign Up</a>
-          <a href="/">Home</a>
+          <a href="/places">Home</a>
         <% end %>
       </div>
     </div>

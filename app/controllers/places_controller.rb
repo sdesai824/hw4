@@ -5,8 +5,12 @@ class PlacesController < ApplicationController
   end
 
   def show
-    @place = Place.find_by({ "id" => params["id"] })
-    @posts = Post.where({ "place_id" => @place["id"] })
+    if @current_user
+      @place = Place.find_by({ "id" => params["id"] })
+      @posts = Post.where({ "place_id" => @place["id"]})
+    else 
+      redirect_to "sessions/new"
+    end
   end
 
   def new
@@ -16,6 +20,7 @@ class PlacesController < ApplicationController
   def create
     @place = Place.new
     @place["name"] = params["place"]["name"]
+    @place["user_id"] = @current_user["id"]
     @place.save
     redirect_to "/places"
   end
